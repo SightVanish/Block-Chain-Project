@@ -11,7 +11,7 @@ def P2PKH_scriptPubKey(address):
     # TODO: Complete the standard scriptPubKey implementation for a
     # PayToPublicKeyHash transaction
     return [
-        # fill this in!
+        OP_DUP, OP_HASH160, address, OP_EQUALVERIFY, OP_CHECKSIG
     ]
     ######################################################################
 
@@ -23,7 +23,7 @@ def P2PKH_scriptSig(txin, txout, txin_scriptPubKey, private_key, public_key):
     # TODO: Complete this script to unlock the BTC that was sent to you
     # in the PayToPublicKeyHash transaction.
     return [
-        # fill this in!
+        signature, public_key 
     ]
     ######################################################################
 
@@ -53,10 +53,10 @@ def send_from_P2PKH_transaction(amount_to_send,
 if __name__ == '__main__':
     ######################################################################
     # TODO: set these parameters correctly
-    amount_to_send = None # amount of BTC in the output you're sending minus fee
+    amount_to_send = 0.00005 # amount of BTC in the output you're sending minus fee
     txid_to_spend = (
-        'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX')
-    utxo_index = None # index of the output you are spending, indices start at 0
+        '92e0432c680bec4ca0a4600c46180a6766031782e6678634d454e7544db45202')
+    utxo_index = 0 # index of the output you are spending, indices start at 0
     ######################################################################
 
     txout_scriptPubKey = P2PKH_scriptPubKey(faucet_address)

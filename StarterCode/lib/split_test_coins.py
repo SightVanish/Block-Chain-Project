@@ -5,12 +5,13 @@ from bitcoin.core.scripteval import VerifyScript, SCRIPT_VERIFY_P2SH
 
 from bitcoin.wallet import CBitcoinSecret, P2PKHBitcoinAddress
 
-from config import (my_private_key, my_public_key, my_address,
-    alice_secret_key_BTC, alice_public_key_BTC, alice_address_BTC, 
-    bob_secret_key_BTC, bob_public_key_BTC, bob_address_BTC,
-    alice_secret_key_BCY, alice_public_key_BCY, alice_address_BCY, 
-    bob_secret_key_BCY, bob_public_key_BCY, bob_address_BCY,
-    faucet_address, network_type)
+# from config import (my_private_key, my_public_key, my_address,
+#     alice_secret_key_BTC, alice_public_key_BTC, alice_address_BTC, 
+#     bob_secret_key_BTC, bob_public_key_BTC, bob_address_BTC,
+#     alice_secret_key_BCY, alice_public_key_BCY, alice_address_BCY, 
+#     bob_secret_key_BCY, bob_public_key_BCY, bob_address_BCY,
+#     faucet_address, network_type)
+from config import (my_private_key, network_type)
 
 from utils import create_txin, create_txout, broadcast_transaction
 
@@ -37,15 +38,15 @@ if __name__ == '__main__':
 
     ######################################################################
     # TODO: set these parameters correctly
-    private_key = None
+    private_key = my_private_key
     public_key = private_key.pub
     address = P2PKHBitcoinAddress.from_pubkey(public_key)
 
-    amount_to_send = None # amount of BTC in the output you're splitting minus fee
+    amount_to_send = 0.0006 # amount of BTC in the output you're splitting minus fee
     txid_to_spend = (
-        'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX')
-    utxo_index = None # index of the output you are spending, indices start at 0
-    n = None # number of outputs to split the input into
+        'b729b01043494360231a89fb3d22a015fbca07a9c5f1d6fb468711a822683390')
+    utxo_index = 0 # index of the output you are spending, indices start at 0
+    n = 6 # number of outputs to split the input into
     # For n, choose a number larger than what you immediately need, 
     # in case you make mistakes.
     ######################################################################
